@@ -1,0 +1,17 @@
+Imports System.Data 
+Imports System.Data.OleDb 
+Public Class Form1 
+Private Sub Form1_Load(sender As Object, e As EventArgs) Handles MyBase.Load 
+Dim conn As New OleDbConnection("Provider=Microsoft.Jet.OLEDB.4.0;Data” &  
+“Source=C:\Users\Suresh\Documents\Visual Studio 
+2012\Projects\DataGrid1\student.mdb") 
+conn.Open() 
+Dim cmd As New OleDbCommand("Select *From Student", conn) 
+Dim da As New OleDbDataAdapter(cmd) 
+Dim ds As New DataSet 
+da.Fill(ds, "Roll Call") 
+DataGrid1.CaptionText = "Student" 
+DataGrid1.DataSource = ds 
+DataGrid1.DataMember = "Roll Call" 
+End Sub 
+End Class 
